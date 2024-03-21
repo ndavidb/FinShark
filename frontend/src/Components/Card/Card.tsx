@@ -4,6 +4,7 @@ import {CompanySearch} from "../../company";
 import search from "../Search/Search";
 import addPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
 import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
+import {Link} from "react-router-dom";
 
 interface Props {
     id: string;
@@ -12,13 +13,16 @@ interface Props {
 }
 const Card : React.FC<Props> = ({searchResult, onPortfolioCreate}: Props) => {
     return (
-        <div className="Card">
-            <img className="company_logo" alt="Image"/>
-            <div className="card_details">
-                <h2>{searchResult.name} - {searchResult.symbol}</h2>
-                <p>{searchResult.currency}</p>
-            </div>
-            <p>{searchResult.stockExchange} - {searchResult.stockExchange}</p>
+        <div
+            className="flex flex-col items-center justify-between w-full p-6 bg-slate-100 rounded-lg md:flex-row"
+        >
+            <Link to={`/company/${searchResult.symbol}`} className="font-bold text-center text-veryDarkViolet md:text-left">
+                {searchResult.name} ({searchResult.symbol})
+            </Link>
+            <p className="text-veryDarkBlue">{searchResult.currency}</p>
+            <p className="font-bold text-veryDarkBlue">
+                {searchResult.exchangeShortName} - {searchResult.stockExchange}
+            </p>
             <AddPortfolio onPortfolioCreate={onPortfolioCreate} symbol={searchResult.symbol}/>
         </div>
     );
