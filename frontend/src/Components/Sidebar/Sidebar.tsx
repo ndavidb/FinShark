@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
-import {FaHome} from "react-icons/fa";
+import {FaBalanceScale, FaHome} from "react-icons/fa";
 import {PiBookOpenFill} from "react-icons/pi";
+import React from "react";
+import {LiaCashRegisterSolid} from "react-icons/lia";
 
 interface Props {}
 const Sidebar = (props: Props) => {
@@ -20,6 +22,15 @@ const Sidebar = (props: Props) => {
                             <PiBookOpenFill />
                             <h6 className="ml-3">Income Statement</h6>
                         </Link>
+                        <Link to="balancesheet-statement" className="flex items-center md:min-w-full text-darkBlue-500 text-medium uppercase font-bold pt-1 pb-4 no-underline">
+                            <FaBalanceScale />
+                            <h6 className="ml-3">Balance Sheet</h6>
+                        </Link>
+                        <Link to="cashflow-statement" className="flex items-center md:min-w-full text-darkBlue-500 text-medium uppercase font-bold pt-1 pb-4 no-underline">
+                            <LiaCashRegisterSolid />
+                            <h6 className="ml-3">Cashflow Statement</h6>
+                        </Link>
+                        
                     </div>
                 </div>
             </div>
